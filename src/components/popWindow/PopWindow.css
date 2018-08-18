@@ -1,0 +1,27 @@
+.pop-window {
+  width: 300px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -100px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+}
+.pop-window.hide {
+  display: none;
+}
+.window-btn {
+  margin-top: 10px;
+  padding: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #20dba1;
+}

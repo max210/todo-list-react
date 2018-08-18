@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import TodoItem from '../components/TodoItem'
+import TodoItem from '../components/todoItem/TodoItem'
+import PopWindow from '../components/popWindow/PopWindow'
 import './TodoList.css'
+import { Provider } from 'react-redux'
+import store from '../store'
 
 class TodoList extends Component {
   constructor (props) {
@@ -11,6 +14,7 @@ class TodoList extends Component {
     this.deleteDoneItem = this.deleteDoneItem.bind(this)
     this.doneItem = this.doneItem.bind(this)
     this.onKeyUp = this.onKeyUp.bind(this)
+    this.showPopWindow = this.showPopWindow.bind(this)
     this.state = {
       inputValue: '',
       list: [],
@@ -23,25 +27,37 @@ class TodoList extends Component {
   render () {
     return (
       <Fragment>
-        <div className="container">
-          <p className="title">TODO LIST</p>
-          <div className="input-container">
-            <input
-              className="input"
-              value={this.state.inputValue}
-              onChange={this.inputChange}
-              onKeyUp={this.onKeyUp} />
-            <p
-              className={`submit-btn ${this.state.active ? 'active' : ''}`}
-              onClick={this.addItem}>
-              增加事项
-            </p>
+        <Provider store={store}>
+          <div className="container">
+            <p className="title">TODO LIST</p>
+            <div className="input-container">
+              <input
+                className="input"
+                value={this.state.inputValue}
+                onChange={this.inputChange}
+                onKeyUp={this.onKeyUp} />
+              <p
+                className={`submit-btn ${this.state.active ? 'active' : ''}`}
+                onClick={this.addItem}>
+                增加事项
+              </p>
+              <p className="submit-btn" onClick={this.showPopWindow}>测试弹窗</p>
+            </div>
+            {this.getTodoList()}
+            {this.getDoneList()}
+            <PopWindow />
           </div>
-          {this.getTodoList()}
-          {this.getDoneList()}
-        </div>
+        </Provider>
       </Fragment>
     )
+  }
+
+  showPopWindow () {
+    const action = {
+      type: 'show_pop_window',
+      value: 'testValue'
+    }
+    store.dispatch(action)
   }
 
   getTodoList () {
