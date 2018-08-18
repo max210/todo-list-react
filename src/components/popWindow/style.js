@@ -1,4 +1,7 @@
-.pop-window {
+// 局部css
+import styled from 'styled-components'
+
+export const PopWindow = styled.div`
   width: 300px;
   height: 100px;
   position: fixed;
@@ -14,14 +17,17 @@
   justify-content: center;
   align-items: center;
   background: #FFFFFF;
-}
-.pop-window.hide {
-  display: none;
-}
-.window-btn {
-  margin-top: 10px;
-  padding: 3px;
+  color: #999;
+  line-height: 20px;
+  &.hide {
+    display: none;
+  }
+`
+export const WindowBtn = styled.p`
+  margin-top: 20px;
+  padding: 5px;
   border-radius: 4px;
   cursor: pointer;
   border: 1px solid #20dba1;
-}
+  font-size: 14px;
+`

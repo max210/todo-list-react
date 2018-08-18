@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import './TodoItem.css'
+import {
+  Item,
+  Info,
+  Btns,
+  CreatTime,
+  Btn
+} from './style'
 
 class TodoItem extends Component {
   constructor (props) {
@@ -14,15 +20,15 @@ class TodoItem extends Component {
     console.log('render')
     return (
       <Fragment>
-        <div className="item">
-        <span className="info">{this.props.item}</span>
-        <div className="btns">
-          <span className="creat-time">创建时间：{this.props.creatTime}</span>
-          <p className="btn" onClick={this.props.done ? this.deleteDoneItem : this.deleteItem}>删除</p>
-          <p className={`btn ${this.props.done ? 'hide' : ''}`} onClick={this.doneItem}>完成{this.props.done}</p>
-          <p className={`btn done ${this.props.done ? '' : 'hide'}`}>已完成</p>
-        </div>
-        </div>
+        <Item>
+        <Info>{this.props.item}</Info>
+        <Btns>
+          <CreatTime>创建时间：{this.props.creatTime}</CreatTime>
+          <Btn onClick={this.props.done ? this.deleteDoneItem : this.deleteItem}>删除</Btn>
+          <Btn className={`${this.props.done ? 'hide' : ''}`} onClick={this.doneItem}>完成{this.props.done}</Btn>
+          <Btn className={`done ${this.props.done ? '' : 'hide'}`}>已完成</Btn>
+        </Btns>
+        </Item>
       </Fragment>
     )
   }

@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import TodoItem from '../components/todoItem/TodoItem'
 import PopWindow from '../components/popWindow/PopWindow'
-import './TodoList.css'
 import { Provider } from 'react-redux'
 import store from '../store'
+import {
+  Container,
+  Title,
+  InputContainer,
+  Input,
+  SubmitBtn
+} from './style'
 
 class TodoList extends Component {
   constructor (props) {
@@ -28,25 +34,25 @@ class TodoList extends Component {
     return (
       <Fragment>
         <Provider store={store}>
-          <div className="container">
-            <p className="title">TODO LIST</p>
-            <div className="input-container">
-              <input
-                className="input"
+          <Container>
+            <Title>TODO LIST</Title>
+            <InputContainer>
+              <Input
+                placeholder="请输入TODO"
                 value={this.state.inputValue}
                 onChange={this.inputChange}
                 onKeyUp={this.onKeyUp} />
-              <p
-                className={`submit-btn ${this.state.active ? 'active' : ''}`}
+              <SubmitBtn
+                className={`${this.state.active ? 'active' : ''}`}
                 onClick={this.addItem}>
                 增加事项
-              </p>
-              <p className="submit-btn" onClick={this.showPopWindow}>测试弹窗</p>
-            </div>
+              </SubmitBtn>
+              <SubmitBtn onClick={this.showPopWindow}>测试弹窗</SubmitBtn>
+            </InputContainer>
             {this.getTodoList()}
             {this.getDoneList()}
             <PopWindow />
-          </div>
+          </Container>
         </Provider>
       </Fragment>
     )

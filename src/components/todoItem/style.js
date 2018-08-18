@@ -1,4 +1,7 @@
-.item {
+// 局部css
+import styled from 'styled-components'
+
+export const Item = styled.div`
   width: 80%;
   height: 60px;
   display: flex;
@@ -8,20 +11,20 @@
   border-radius: 10px;
   padding: 0 10px;
   margin-bottom: 20px;
-}
-.info {
+`
+export const Info = styled.span`
   font-size: 16px;
   white-space: wrap;
-}
-.creat-time {
-  font-size: 14px;
-  color: #777777;
-}
-.btns {
+`
+export const Btns = styled.div`
   display: flex;
   align-items: center;
-}
-.btn {
+`
+export const CreatTime = styled.span`
+  font-size: 14px;
+  color: #777777;
+`
+export const Btn = styled.p`
   width: 60px;
   height: 30px;
   line-height: 30px;
@@ -32,14 +35,14 @@
   cursor: pointer;
   color: #FFFFFF;
   font-size: 14px;
-}
-.btn:hover {
-  background-color: #20dba1;
-}
-.btn.hide {
-  display: none;
-}
-.btn.done {
-  background-color: #999999;
-  cursor: auto;
-}
+  &:hover {
+    background-color: #20dba1;
+  }
+  &.hide {
+    display: none;
+  }
+  &.done {
+    background-color: #999999;
+    cursor: auto;
+  }
+`
